@@ -1,0 +1,41 @@
+{
+    "name": "tmoiseenko/moonshine-cropper",
+    "description": "SunEditor for moonshine",
+    "keywords": ["suneditor", "moonshine", "WYSIWYG"],
+    "type": "library",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/Tmoiseenko/moonshine-cropper/issues",
+        "source": "https://github.com/Tmoiseenko/moonshine-cropper"
+    },
+    "authors": [
+        {
+            "name": "Timur Moiseenko",
+            "email": "angrav-6@yandex.ru",
+            "homepage": "https://tmoiseenko.uz"
+        }
+    ],
+    "require": {
+        "php": "^8.0|^8.1|^8.2",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "moonshine/moonshine": ">2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tmoiseenko\\MoonshineCropper\\": "src/"
+        }
+    },
+    "conflict": {
+        "moonshine/moonshine": "<2.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+              "CropperServiceProvider"
+            ]
+        }
+    }
+}
