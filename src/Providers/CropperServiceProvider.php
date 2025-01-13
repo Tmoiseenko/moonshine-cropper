@@ -19,11 +19,5 @@ final class CropperServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../../public' => public_path('vendor/moonshine-cropper'),
         ], ['moonshine-cropper-assets', 'laravel-assets']);
-
-        $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
-
-        $this->publishesMigrations(
-            [__DIR__ . '/../../database/migrations' => database_path('migrations')],
-            ['moonshine-cropper-migration']);
     }
 }

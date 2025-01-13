@@ -4,12 +4,22 @@
     x-data="cropper">
 
     <small class="cropper-small">{{ __('moonshine-cropper::field.Upload image from your computer:') }}</small>
+
     <x-moonshine::form.file
-        @change="handleFileChange($event)"
         :attributes="$element->attributes()->merge([
-                                                    'name' => $element->name(),
-                                                    ])"
-    ></x-moonshine::form.file>
+        'id' => $element->id(),
+        'name' => $element->name(),
+    ])"
+        :files="$element->getFullPathValues()"
+        :raw="is_iterable($value) ? $value : [$value]"
+        :removable="$element->isRemovable()"
+        :removableAttributes="$element->getRemovableAttributes()"
+        :imageable="true"
+        :names="$element->resolveNames()"
+        :itemAttributes="$element->resolveItemAttributes()"
+        :hiddenAttributes="$element->getHiddenAttributes()"
+        @change="handleFileChange($event)"
+    />
 
     <div
         @defineEvent('modal-toggled', 'modal-cropper', 'toggleModal')
@@ -50,7 +60,10 @@
                         <x-moonshine::link-button @click.prevent="toggleModal" class="btn-secondary">
                             {{ __('moonshine-cropper::field.Close') }}
                         </x-moonshine::link-button>
-                        <a @click.prevent="cropImage" class="btn btn-primary" data-url="{{ route('moonshine.cropper.upload') }}">
+                        <a class="btn btn-primary"
+                           data-fieldName="{{ $element->name() }}"
+                           @click.prevent="cropImage"
+                        >
                             {{ __('moonshine-cropper::field.Crop') }}
                         </a>
                     </div>
