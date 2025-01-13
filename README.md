@@ -1,4 +1,4 @@
-# Suneditor field for [MoonShine Laravel admin panel](https://moonshine-laravel.com)
+# Image cropper field for [MoonShine Laravel admin panel](https://moonshine-laravel.com)
 
 ### Requirements
 
