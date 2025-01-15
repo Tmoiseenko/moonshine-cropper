@@ -1,7 +1,7 @@
 {
     "name": "tmoiseenko/moonshine-cropper",
-    "description": "SunEditor for moonshine",
-    "keywords": ["suneditor", "moonshine", "WYSIWYG"],
+    "description": "Image cropper field for moonshine",
+    "keywords": ["Image cropper", "moonshine"],
     "type": "library",
     "license": "MIT",
     "support": {
