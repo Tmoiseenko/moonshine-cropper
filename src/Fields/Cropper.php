@@ -2,17 +2,22 @@
 
 namespace Tmoiseenko\MoonshineCropper\Fields;
 
-use MoonShine\Fields\Image;
+use MoonShine\AssetManager\Css;
+use MoonShine\AssetManager\Js;
+use MoonShine\UI\Fields\Image;
 
 class Cropper extends Image
 {
     protected string $view = 'moonshine-cropper::fields.cropper';
     protected string $accept = 'image/*';
 
-    protected array $assets = [
-        'vendor/moonshine-cropper/css/cropper.min.css',
-        'vendor/moonshine-cropper/css/moonshine-cropper.css',
-        'vendor/moonshine-cropper/js/cropper.min.js',
-        'vendor/moonshine-cropper/js/cropper-init.js',
-    ];
+    public function assets(): array
+    {
+        return [
+            Css::make('vendor/moonshine-cropper/css/cropper.min.css'),
+            Css::make('vendor/moonshine-cropper/css/moonshine-cropper.css'),
+            Js::make(   'vendor/moonshine-cropper/js/cropper.min.js'),
+            Js::make(   'vendor/moonshine-cropper/js/cropper-init.js'),
+        ];
+    }
 }

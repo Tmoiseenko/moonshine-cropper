@@ -1,29 +1,18 @@
-<x-moonshine::layout.div
-    :attributes="$element->attributes()->merge(['name' => $element->name()])"
-    ::id="$id('cropper')"
-    x-data="cropper">
+<x-moonshine::layout.div x-data="cropper">
 
     <small class="cropper-small">{{ __('moonshine-cropper::field.Upload image from your computer:') }}</small>
 
     <x-moonshine::form.file
-        :attributes="$element->attributes()->merge([
-        'id' => $element->id(),
-        'name' => $element->name(),
-    ])"
-        :files="$element->getFullPathValues()"
-        :raw="is_iterable($value) ? $value : [$value]"
-        :removable="$element->isRemovable()"
-        :removableAttributes="$element->getRemovableAttributes()"
+        :attributes="$attributes"
+        :files="$files"
+        :removable="$isRemovable"
+        :removableAttributes="$removableAttributes"
+        :hiddenAttributes="$hiddenAttributes"
         :imageable="true"
-        :names="$element->resolveNames()"
-        :itemAttributes="$element->resolveItemAttributes()"
-        :hiddenAttributes="$element->getHiddenAttributes()"
         @change="handleFileChange($event)"
     />
 
-    <div
-        @defineEvent('modal-toggled', 'modal-cropper', 'toggleModal')
-    >
+    <div @defineEvent('modal-toggled', 'modal-cropper', 'toggleModal') >
         <div
             class="modal"
             x-show="open"
@@ -45,10 +34,7 @@
                                 @click.stop="open=false"
                                 aria-label="Close"
                         >
-                            <x-moonshine::icon
-                                icon="heroicons.x-mark"
-                                size="6"
-                            />
+                            <x-moonshine::icon icon="x-mark" size="6"/>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -61,7 +47,7 @@
                             {{ __('moonshine-cropper::field.Close') }}
                         </x-moonshine::link-button>
                         <a class="btn btn-primary"
-                           data-fieldName="{{ $element->name() }}"
+                           data-fieldName="{{ $attributes['name'] }}"
                            @click.prevent="cropImage"
                         >
                             {{ __('moonshine-cropper::field.Crop') }}
@@ -72,7 +58,6 @@
         </div>
 
         <div x-show="open" x-transition.opacity class="modal-backdrop"></div>
-    </div>
+
 
 </x-moonshine::layout.div>
-
