@@ -2,7 +2,14 @@
 
 ### Requirements
 
-- MoonShine v2.0+
+- MoonShine v3.0+
+
+### Support MoonShine versions
+
+| MoonShine   | CKEditor |
+|-------------|----------|
+| 2.0+        | 1.0+     |
+| 3.0+        | 2.0+     |
 
 All the same methods work for the field as for the Image field.
 
